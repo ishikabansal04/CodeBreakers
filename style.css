@@ -4,9 +4,10 @@ header{
 	height:135px;
 	color:white;
 	width:50%;
-	padding-top: 0.0020%;
+	padding-top: 0%;
     margin-right: 0px;
     float:left;
+    /* margin-bottom: 300px; */
 }
 body{
 	padding: 0px;
@@ -19,6 +20,20 @@ body{
 	margin-top: 13px;
 
 }
+
+    
+#container{
+    margin-top: 5px;
+    padding:0;
+    border: 0.5px transparent black;
+    border-radius: 200px;
+    background-color:hsl(0, 64%, 95%) /*hsl(165, 59%, 87%)*/ ;
+    margin-left: 5px;
+    width:300px;
+    height:300px;
+    float:left;
+}
+
 .navbar2{
 	margin-left:0px;
 	height: 100vh;
@@ -26,9 +41,9 @@ body{
 	opacity: 0.8;
 	width:50%;
     margin-top:0%;
-    float:left;
+    float:right;
     margin-right: 0px;
-
+    margin-bottom: 0px;
 }
 .navbar2 h2{
     text-align: relative;

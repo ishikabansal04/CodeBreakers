@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+	<meta charset = "UTF-8">
+	<title>Drop-down-Menu-Bar</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel = "stylesheet" href = "style.css">
+	<link rel = "stylesheet" href = "https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<!-- <link rel = "stylesheet" href = "bootstrap/css/bootstrap-grid.css"> -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<header>	
+	<h2 id="heading">Tic Tac Toe</h2>
+    </header>
+    <section class="grid">
+        <!-- first row -->
+    <div class="boardContainer"> 
+        <div class="row" id="firstrow">
+            <div id="zero" class="bottom-right"></div>
+            <div id="one" class="bottom-right"></div>
+            <div id="two" class="bottom"></div>   
+        </div>
+        <!-- second row -->
+        <div class="row">
+            <div id="three" class="bottom-right"></div>
+            <div id="four" class="bottom-right"></div>
+            <div id="five" class="bottom"></div>   
+        </div>
+        <!-- third row -->
+        <div class="row">
+            <div id="six" class="square right"></div>
+            <div id="seven" class="square right"></div>
+            <div id="eight" class="square"></div>   
+        </div>  
+    </div>    
+    </section>
+    
+    <section class="navbar2">
+        <h2>You're playing against the computer.</br> Choose X or O</h2>
+        <form action="#">
+            <input class="checkBox" type="checkbox" name="xPlayer" value="X">X Player
+            <input class="checkBox" type="checkbox" name="oPlayer" value="O">O Player      
+          </form> 
+    </section>
+      <!-- board container -->
+    
+</body>
+</html>

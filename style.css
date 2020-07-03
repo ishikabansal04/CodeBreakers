@@ -1,0 +1,106 @@
+header{
+    text-align: center;
+	background:#293f50;
+	height:135px;
+	color:white;
+	width:50%;
+	padding-top: 0.0020%;
+    margin-right: 0px;
+    float:left;
+}
+body{
+	padding: 0px;
+	margin: 0px;
+}
+#heading{
+	margin-bottom: 7px;
+	font: inherit;
+	font-size: 60px;
+	margin-top: 13px;
+
+}
+.navbar2{
+	margin-left:0px;
+	height: 100vh;
+	background-color:white/*#d7edca*/;
+	opacity: 0.8;
+	width:50%;
+    margin-top:0%;
+    float:left;
+    margin-right: 0px;
+
+}
+.navbar2 h2{
+    text-align: relative;
+	padding-top: 10px;
+	color:black;
+	font: inherit;
+	font-size: 35px;
+	padding-left: 2%;
+}
+.navbar2 .checkBox {
+    margin-left: 20px; 
+    font-size: 40px;
+  } 
+  
+  .boardContainer {
+    margin-top: 0px;
+    float:right;
+    margin-left: 0px;
+    background-color: black;
+    width:50%;
+    height:100vh;
+    /* margin-left:10px; */
+
+  }
+  
+  .boardContainer .row {
+      margin-left:150px;
+  }
+  .boardContainer #firstrow{
+      margin-top: 100px;
+  }
+  
+  .row > div {
+    display: inline-block;
+    font-size: 90px;
+    border: solid 1px white;
+    width: 100px;
+    height: 100px;
+    text-align: center;
+    vertical-align: top;
+    line-height: 100px;
+  }
+  
+  .reset {
+    margin-top: 100px;
+  } 
+  #zero,#one, #three, #four {
+     border-right: solid 8px white;
+     border-bottom: solid 8px white;
+     border-top:none;
+     border-left:none;
+     height:150px;
+     width:150px;
+  }
+  
+  #two, #five {
+    border-bottom: solid 8px white;
+    border-top:none;
+    border-left:none;
+    border-right:none;
+    height:150px;
+    width:150px;
+  }
+  
+  #six, #seven{
+    border-right: solid 8px white;
+    border-top:none;
+    border-left:none;
+    border-bottom:none;
+    height:150px;
+    width:150px;
+  }
+  #eight{
+      border:none;
+  }

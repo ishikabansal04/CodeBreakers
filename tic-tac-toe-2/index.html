@@ -23,11 +23,36 @@
 
             <div class="play">PLAY</div>
         </div>
-        <canvas id="cvs" class="hide" width="550" height="550"></canvas>
+        <div class="hide">
+            <div id="btn"><button onclick="take_snapshot()" >Take snapshot</button></div>
+            <div id="camera" ></div>
+            <div class ="result hide"id="results" ></div>
+            <canvas id="cvs" width="550" height="550"></canvas>  
+        </div>
         <div class="gameover hide"></div>
     </div>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.26/webcam.min.js"></script>
     <script src="options.js"></script>
     <script src="game.js"></script>
+    <script>
+        Webcam.set({
+            width:450,
+            height:450,
+            image_format:'jpeg',
+            jpeg_quality:90
+        })
+        const cam=document.getElementById('camera');
+        const res=document.getElementById("results");
+        const btn=document.getElementById('btn');
+        Webcam.attach("#camera")
+        function take_snapshot(){
+            Webcam.snap(function(data_uri){
+                document.getElementById('results').innerHTML = '<img src ="'+data_uri+'"/>';
+                cam.classList.add('hide');
+                btn.classList.add('hide');
+                res.classList.remove('hide');
+            });
+        }
+    </script>
 </body>
 </html>

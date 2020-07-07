@@ -108,7 +108,7 @@ button{
     display: inline-block;
 }
 
-.options .computer, .x, .level,.level2{
+.options .computer, .x, .level,.level2, .t3{
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     padding: 5px;
     background-color: #888;
@@ -126,7 +126,7 @@ button{
     /* border: 1px solid #000; */
 }
 
-.options .friend, .o, .level,.level2{
+.options .friend, .o, .level,.level2, .t5{
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     padding: 5px;
     background-color: #888;
@@ -144,7 +144,7 @@ button{
     /* border: 1px solid #000; */
 }
 
-.options .friend:hover, .computer:hover, .x:hover, .o:hover, .level:hover, .level2:hover{
+.options .friend:hover, .computer:hover, .x:hover, .o:hover, .level:hover, .level2:hover, t3:hover, .t5:hover{
     background-color: #011627;
     color: #FFF;
 }
@@ -186,12 +186,12 @@ button{
 .gameover{
     /* position: absolute; */
     width: 900px;
-    height: 500px;
+    height: 525px;
     margin-top:10px;
     margin-left:20%;
     background-color: rgba(0, 0, 0, 0.95);
 }
-.gameover h1{
+.gameover h2{
     text-align: center;
     font-size: 50px;
     font-family: 'Fascinate Inline', cursive;
@@ -203,7 +203,7 @@ button{
 
 .gameover .winner-img{
     display: block;
-    margin: 50px auto;
+    margin: 40px auto;
 }
 
 .gameover .play{

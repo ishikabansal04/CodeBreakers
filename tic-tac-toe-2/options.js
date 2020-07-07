@@ -6,6 +6,10 @@ const computerBtn = document.querySelector(".computer");
 const friendBtn = document.querySelector(".friend");
 const xBtn = document.querySelector(".x");
 const oBtn = document.querySelector(".o");
+//----------dimension----------
+const t3Btn = document.querySelector(".t3");
+const t5Btn = document.querySelector(".t5");
+//-----------------------------
 //----------level--------------
 const levBtn = document.querySelector(".level");
 const levBtn2 = document.querySelector(".level2");
@@ -18,6 +22,10 @@ const gameOverElement = document.querySelector(".gameover");
 
 const player = new Object;
 let OPPONENT;
+
+//-dimension var---
+let DIMENSION;
+//----------
 
 //-level var---
 let LEVEL=0;
@@ -48,6 +56,19 @@ friendBtn.addEventListener("click", function(){
     OPPONENT = "friend";
     switchActive(computerBtn, friendBtn);
 });
+
+//----------------dimension--------
+t3Btn.addEventListener("click", function(){
+    DIMENSION = "3*3";
+    switchActive(t5Btn, t3Btn);
+});
+
+t5Btn.addEventListener("click", function(){
+    DIMENSION = "5*5";
+    switchActive(t3Btn, t5Btn);
+});
+//-------------dimension------------
+
 //------------level----------------
 levBtn.addEventListener("click", function() {
     LEVEL=1;
@@ -76,6 +97,12 @@ playBtn.addEventListener("click", function(){
         return;
     }
 
+    if( !DIMENSION ){
+        t3Btn.style.backgroundColor = "red";
+        t5Btn.style.backgroundColor = "red";
+        return;
+    }
+
     if(LEVEL==0)
     {
         levBtn.style.backgroundColor="red";
@@ -83,9 +110,16 @@ playBtn.addEventListener("click", function(){
         return;
     }
     
-    init(player, OPPONENT, LEVEL);
-   
-
+    if(DIMENSION == "3*3"){
+        game(player, OPPONENT, LEVEL);
+        options.classList.add("hide");
+        c.classList.remove("hide");
+    }else {
+        game2(player, OPPONENT);
+        options.classList.add("hide");
+        c.classList.remove("hide");
+    }
+    
     options.classList.add("hide");
     c.classList.remove("hide");
 

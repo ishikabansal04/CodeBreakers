@@ -1,4 +1,4 @@
-function init(player, OPPONENT, LEVEL){
+function game(player, OPPONENT, LEVEL){
     // SELECT CANAVS
     const canvas = document.getElementById("cvs");
     const ctx = canvas.getContext("2d");
@@ -272,7 +272,7 @@ function init(player, OPPONENT, LEVEL){
         let imgSrc = `img/${player}.png`;
 
         gameOverElement.innerHTML = `
-            <h1>${message}</1>
+            <h2>${message}<h2>
             <img class="winner-img" src=${imgSrc} </img>
             <div class="play" onclick="location.reload()">Play Again!</div>
         `;

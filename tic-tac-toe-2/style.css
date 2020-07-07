@@ -108,7 +108,7 @@ button{
     display: inline-block;
 }
 
-.options .computer, .x{
+.options .computer, .x, .level,.level2{
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     padding: 5px;
     background-color: #888;
@@ -126,7 +126,7 @@ button{
     /* border: 1px solid #000; */
 }
 
-.options .friend, .o{
+.options .friend, .o, .level,.level2{
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     padding: 5px;
     background-color: #888;
@@ -140,10 +140,11 @@ button{
     text-align: center;
     cursor: pointer;
     box-shadow: 5px 10px black;
+    margin-left: 10px;
     /* border: 1px solid #000; */
 }
 
-.options .friend:hover, .computer:hover, .x:hover, .o:hover{
+.options .friend:hover, .computer:hover, .x:hover, .o:hover, .level:hover, .level2:hover{
     background-color: #011627;
     color: #FFF;
 }

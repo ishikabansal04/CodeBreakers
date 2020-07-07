@@ -1,4 +1,4 @@
-function init(player, OPPONENT){
+function init(player, OPPONENT, LEVEL){
     // SELECT CANAVS
     const canvas = document.getElementById("cvs");
     const ctx = canvas.getContext("2d");
@@ -98,7 +98,16 @@ function init(player, OPPONENT){
 
         if( OPPONENT == "computer"){
             // get id of space using minimax algorithm
-            let id = minimax( gameData, player.computer ).id;
+
+                if(LEVEL==1)
+                {
+                    id= level1_algo(gameData, player.computer);
+                }
+
+                else if(LEVEL==2)
+                {
+                     id = minimax( gameData, player.computer ).id;
+                }
 
             // store the player's move to gameData
             gameData[id] = player.computer;
@@ -107,7 +116,7 @@ function init(player, OPPONENT){
             let space = getIJ(id);
 
             // draw the move on board
-            drawOnBoard(player.computer, space.i, space.j);
+            drawOnBoard(player.computer, space.i, space.j );
 
             // Check if the play wins
             if(isWinner(gameData, player.computer)){
@@ -128,6 +137,17 @@ function init(player, OPPONENT){
         }
 
     });
+
+    
+    function level1_algo(gameData, PLAYER)
+    {
+        let EMPTY_SPACES = getEmptySpaces(gameData);
+        let id= EMPTY_SPACES[0];
+        delete EMPTY_SPACES[0];
+        return id;
+        
+    }
+    
 
     // MINIMAX
     function minimax(gameData, PLAYER){
@@ -211,7 +231,8 @@ function init(player, OPPONENT){
     function getIJ(id){
         for(let i = 0; i < board.length; i++){
             for(let j = 0; j < board[i].length; j++){
-                if(board[i][j] == id) return { i : i, j : j}
+                if(board[i][j] == id) 
+                  return { i:i, j:j};
             }
         }
     }
@@ -268,4 +289,6 @@ function init(player, OPPONENT){
         // the x,y positon of the image are the x,y of the clicked space
         ctx.drawImage(img, j * SPACE_SIZE, i * SPACE_SIZE);
     }
+
+
 }

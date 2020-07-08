@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Tic Tac Toe - JavaScript</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+
+        <div class="options">
+            <h1>Tic Tac Toe</h1>
+            <div>
+                <h2>Opponent</h2>
+                <div class="computer">COMPUTER</div>
+                <div class="friend">FRIEND</div>
+            </div>
+           
+        <div>
+            <h2>Symbol</h2>
+            <div class="x">X</div>
+            <div class="o">O</div>
+
+        </div>
+           
+            <!-----dimension------->
+        <div>
+            <h2>Dimension</h2>
+            <div class="t3">3*3</div>
+            <div class="t5">5*5</div>
+        </div>
+           
+            <!------------------>
+        <div>
+            <h2>First Move</h2>
+            <div class="you">YOU</div>
+            <div class="opp">OPPONENT</div>
+        </div>
+        <div>
+            <h2>Level</h2>
+            <div class="level">1</div>
+            <div class="level2">2</div>
+            <div class="level3">3</div>
+        </div>
+            <!-----level------->
+        
+           
+            <!------------------>
+
+            <div class="play">PLAY</div>
+        </div>
+        <div class="hide">
+            
+            <div id="camera" ></div>
+            <div class ="result hide"id="results" ></div>
+            <canvas id="cvs" width="550" height="550"></canvas>  
+            <div id="btn"><button onclick="take_snapshot()" >Take snapshot</button></div>            
+        </div>
+
+        <div class="gameover hide"></div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.26/webcam.min.js"></script>
+    <script src="options.js"></script>
+    <script src="game.js"></script>
+    <script src="game2.js"></script>
+    <script>
+        Webcam.set({
+            width:450,
+            height:450,
+            image_format:'jpeg',
+            jpeg_quality:90
+        })
+        const cam=document.getElementById('camera');
+        const res=document.getElementById("results");
+        const btn=document.getElementById('btn');
+        Webcam.attach("#camera")
+        function take_snapshot(){
+            Webcam.snap(function(data_uri){
+                document.getElementById('results').innerHTML = '<img src ="'+data_uri+'"/>';
+                cam.classList.add('hide');
+                btn.classList.add('hide');
+                res.classList.remove('hide');
+            });
+        }
+    </script>
+</body>
+</html>

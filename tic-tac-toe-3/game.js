@@ -270,7 +270,6 @@ function game(player, OPPONENT, LEVEL){
     function showGameOver(player){
         let message = player == "tie" ? "Oops No Winner" : "The Winner is";
         let imgSrc = `img/${player}.png`;
-    
         gameOverElement.innerHTML = `
             <h2>${message}<h2>
             <img class="winner-img" src=${imgSrc} </img>
@@ -280,6 +279,8 @@ function game(player, OPPONENT, LEVEL){
         gameOverElement.classList.remove("hide");
         // canvas.style.display='none';
         c.classList.add("hide");
+        frndcam.classList.add("hide");
+        Robot.classList.add("hide");
     }
 
     // draw on board

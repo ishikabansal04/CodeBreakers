@@ -281,6 +281,8 @@ function game2(player, OPPONENT){
         gameOverElement.classList.remove("hide");
         // canvas.style.display='none';
         c.classList.add("hide");
+        frndcam.classList.add("hide");
+        Robot.classList.add("hide");
     }
 
     // draw on board

@@ -16,7 +16,10 @@ const levBtn2 = document.querySelector(".level2");
 //--------------------------------
 const playBtn = document.querySelector(".play");
 const canvas = document.getElementById("canvas");
-const c= document.querySelector(".hide")
+const c= document.querySelector(".Mycam");
+const frndcam=document.querySelector(".friendCam");
+const Robot=document.querySelector(".Robot");
+// const body=document.querySelector("body");
 // GAME OVER ELEMENT
 const gameOverElement = document.querySelector(".gameover");
 
@@ -113,19 +116,36 @@ playBtn.addEventListener("click", function(){
     if(DIMENSION == "3*3"){
         game(player, OPPONENT, LEVEL);
         options.classList.add("hide");
-        c.classList.remove("hide");
+        // c.classList.remove("hide");
+        // frndcam.classList.remove("hide");
     }else {
         game2(player, OPPONENT);
         options.classList.add("hide");
-        c.classList.remove("hide");
+        // c.classList.remove("hide");
+        // frndcam.classList.remove("hide");
     }
-    
+    // body.style.backgroundColor="red";
     options.classList.add("hide");
     c.classList.remove("hide");
+    if(OPPONENT == "friend"){
+        frndcam.classList.remove("hide");
+        Robot.classList.add("hide");
+    }
+    else{
+        Robot.classList.remove("hide");
+        frndcam.classList.add("hide");
+    }
 
+    //  changeBg();
+    // frndcam.classList.remove("hide");
+    // Robot.classList.remove("hide");
 });
 
 function switchActive(off, on){
     off.classList.remove("active");
     on.classList.add("active");
+}
+
+function changeBg(){
+    document.getElementsByTagName('body').style.backgroundImage ="url(img/mars12.jpg)";
 }

@@ -1,5 +1,5 @@
 function game(player, OPPONENT, LEVEL){
-    // SELECT CANAVS
+    // SELECT CANVAS
     const canvas = document.getElementById("cvs");
     const ctx = canvas.getContext("2d");
 
@@ -14,6 +14,7 @@ function game(player, OPPONENT, LEVEL){
     
     // By default the first player to play is the human
     let currentPlayer = player.man;
+    let us= player.man;
 
     // load X & O images
     const xImage = new Image();
@@ -106,7 +107,7 @@ function game(player, OPPONENT, LEVEL){
 
                 else if(LEVEL==2)
                 {
-                     id = minimax( gameData, player.computer ).id;
+                    id = minimax( gameData, player.computer ).id;
                 }
 
             // store the player's move to gameData
@@ -268,10 +269,26 @@ function game(player, OPPONENT, LEVEL){
 
     // SHOW GAME OVER
     function showGameOver(player){
-        let message = player == "tie" ? "Oops No Winner" : "The Winner is";
+        let message = player == "tie" ? "Oops No Winner" : "Boom! The Winner is";
         let imgSrc = `img/${player}.png`;
+        let winner;
+        if(player=="tie"){
+            winner="It's a tie!";
+        }
+        else if(us == player){
+            winner="Player One!";
+        }
+        else{
+            if(OPPONENT=="friend"){
+                winner="Player Two!";
+            }
+            else{
+                winner="Computer";
+            }
+        }
         gameOverElement.innerHTML = `
-            <h2>${message}<h2>
+            <h2>${message}<h2><br>
+            <h4>${winner}<h4>
             <img class="winner-img" src=${imgSrc} </img>
             <div class="play" onclick="location.reload()">Play Again!</div>
         `;

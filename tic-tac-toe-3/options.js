@@ -13,6 +13,7 @@ const t5Btn = document.querySelector(".t5");
 //----------level--------------
 const levBtn = document.querySelector(".level");
 const levBtn2 = document.querySelector(".level2");
+const levBtn3 = document.querySelector(".level3");
 //--------------------------------
 const playBtn = document.querySelector(".play");
 const canvas = document.getElementById("canvas");
@@ -70,7 +71,6 @@ t5Btn.addEventListener("click", function(){
     DIMENSION = "5*5";
     switchActive(t3Btn, t5Btn);
 });
-//-------------dimension------------
 
 //------------level----------------
 levBtn.addEventListener("click", function() {
@@ -84,6 +84,12 @@ levBtn2.addEventListener("click", function(){
     switchActive(levBtn,levBtn2);
     
 })
+
+// levBtn2.addEventListener("click", function(){
+//     LEVEL=3;
+//     switchActive(levBtn,levBtn2);
+    
+// })
 
 //-----------------------------------
 
@@ -119,7 +125,7 @@ playBtn.addEventListener("click", function(){
         // c.classList.remove("hide");
         // frndcam.classList.remove("hide");
     }else {
-        game2(player, OPPONENT);
+        game2(player, OPPONENT,LEVEL);
         options.classList.add("hide");
         // c.classList.remove("hide");
         // frndcam.classList.remove("hide");
@@ -146,6 +152,6 @@ function switchActive(off, on){
     on.classList.add("active");
 }
 
-function changeBg(){
-    document.getElementsByTagName('body').style.backgroundImage ="url(img/mars12.jpg)";
-}
+// function changeBg(){
+//     document.getElementsByTagName('body').style.backgroundImage ="url(img/mars12.jpg)";
+// }

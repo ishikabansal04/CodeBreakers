@@ -277,8 +277,8 @@ button{
 .gameover{
     /* position: absolute; */
     width: 900px;
-    height: 500px;
-    margin-top:0px;
+    height: 520px;
+    margin-top:40px;
     margin-left:20%;
     background-color: rgba(0, 0, 0, 0.95);
 }
@@ -287,14 +287,22 @@ button{
     font-size: 50px;
     font-family: 'Fascinate Inline', cursive;
     color: #fff;
-    margin: 80px 0 20px 0;
-    margin-top:90px !important;
-    padding-top:20px;
+    margin: 4px 0 0px 0;
+    /* margin-top:90px !important; */
+    /* padding-top:20px; */
 }
-
+.gameover h4{
+    text-align: center;
+    font-size: 50px;
+    font-family: 'Fascinate Inline', cursive;
+    color: #fff;
+    margin: 0px 0 1px 0;
+    /* margin-top:90px !important; */
+    /* padding-top:20px; */
+}
 .gameover .winner-img{
     display: block;
-    margin: 8px auto;
+    margin: 2px auto;
 }
 
 .gameover .play{

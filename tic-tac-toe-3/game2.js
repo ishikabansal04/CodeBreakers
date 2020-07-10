@@ -1,4 +1,4 @@
-function game2(player, OPPONENT){
+function game2(player, OPPONENT,LEVEL){
     // SELECT CANAVS
     const canvas = document.getElementById("cvs");
     const ctx = canvas.getContext("2d");
@@ -14,13 +14,13 @@ function game2(player, OPPONENT){
     
     // By default the first player to play is the human
     let currentPlayer = player.man;
-
+    let us= player.man;
     // load X & O images
-    const xImage = new Image();
-    xImage.src = "img/X2.png";
+    const x2Image = new Image();
+    x2Image.src = "img/X2.png";
 
-    const oImage = new Image();
-    oImage.src = "img/O2.png";
+    const o2Image = new Image();
+    o2Image.src = "img/O2.png";
 
     // Win combinations
     const COMBOS = [
@@ -105,12 +105,12 @@ function game2(player, OPPONENT){
 
                 if(LEVEL==1)
                 {
-                    id= level1_algo(gameData, player.computer);
+                    id= level1_algo2(gameData, player.computer);
                 }
 
                 else if(LEVEL==2)
                 {
-                     id = minimax( gameData, player.computer ).id;
+                    id = minimax2( gameData, player.computer ).id;
                 }
 
             // store the player's move to gameData
@@ -142,32 +142,32 @@ function game2(player, OPPONENT){
     });
 
     
-    function level1_algo(gameData, PLAYER)
+    function level1_algo2(gameData, PLAYER)
     {
-        let EMPTY_SPACES = getEmptySpaces(gameData);
-        let id= EMPTY_SPACES[0];
-        delete EMPTY_SPACES[0];
+        let EMPTY_SPACE = getEmptySpaces(gameData);
+        let id= EMPTY_SPACE[0];
+        delete EMPTY_SPACE[0];
         return id;
         
     }
     
     // MINIMAX
-    function minimax(gameData, PLAYER){
+    function minimax2(gameData, PLAYER){
         // BASE
-        if( isWinner(gameData, player.computer) ) return { evaluation : +10 };
-        if( isWinner(gameData, player.man)      ) return { evaluation : -10 };
+        if( isWinner(gameData, player.computer) ) return { evaluation : +26 };
+        if( isWinner(gameData, player.man)      ) return { evaluation : -26 };
         if( isTie(gameData)                     ) return { evaluation : 0 };
 
         // LOOK FOR EMTY SPACES
-        let EMPTY_SPACES = getEmptySpaces(gameData);
+        let EMPTY_SPACE = getEmptySpaces(gameData);
 
         // SAVE ALL MOVES AND THEIR EVALUATIONS
         let moves = [];
 
         // LOOP OVER THE EMPTY SPACES TO EVALUATE THEM
-        for( let i = 0; i < EMPTY_SPACES.length; i++){
+        for( let i = 0; i < EMPTY_SPACE.length; i++){
             // GET THE ID OF THE EMPTY SPACE
-            let id = EMPTY_SPACES[i];
+            let id = EMPTY_SPACE[i];
 
             // BACK UP THE SPACE
             let backup = gameData[id];
@@ -233,7 +233,8 @@ function game2(player, OPPONENT){
     function getIJ(id){
         for(let i = 0; i < board.length; i++){
             for(let j = 0; j < board[i].length; j++){
-                if(board[i][j] == id) return { i : i, j : j}
+                if(board[i][j] == id) 
+                    return { i:i, j:j};
             }
         }
     }
@@ -269,11 +270,26 @@ function game2(player, OPPONENT){
 
     // SHOW GAME OVER
     function showGameOver(player){
-        let message = player == "tie" ? "Oops No Winner" : "The Winner is";
-        let imgSrc = `img/${player}2.png`;
-
+        let message = player == "tie" ? "Oops No Winner" : "Boom! The Winner is";
+        let imgSrc = `img/${player}.png`;
+        let winner;
+        if(player=="tie"){
+            winner="It's a tie!";
+        }
+        else if(us ==player){
+            winner="Player One!";
+        }
+        else{
+            if(OPPONENT=="friend"){
+                winner="Player Two!";
+            }
+            else{
+                winner="Computer";
+            }
+        }
         gameOverElement.innerHTML = `
-            <h2>${message}<h2>
+            <h2>${message}<h2><br>
+            <h4>${winner}<h4>
             <img class="winner-img" src=${imgSrc} </img>
             <div class="play" onclick="location.reload()">Play Again!</div>
         `;
@@ -287,7 +303,7 @@ function game2(player, OPPONENT){
 
     // draw on board
     function drawOnBoard(player, i, j){
-        let img = player == "X" ? xImage : oImage;
+        let img = player == "X" ? x2Image : o2Image;
 
         // the x,y positon of the image are the x,y of the clicked space
         ctx.drawImage(img, j * SPACE_SIZE, i * SPACE_SIZE);

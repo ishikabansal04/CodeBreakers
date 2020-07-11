@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Tic Tac Toe - JavaScript</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+
+        <div class="options">
+            <h1>Tic Tac Toe</h1>
+            <div>
+                <h2>Opponent</h2>
+                <div class="computer">COMPUTER</div>
+                <div class="friend">FRIEND</div>
+            </div>
+           
+        <div>
+            <h2>Symbol</h2>
+            <div class="x">X</div>
+            <div class="o">O</div>
+
+        </div>
+           
+            <!-----dimension------->
+        <div>
+            <h2>Dimension</h2>
+            <div class="t3">3*3</div>
+            <div class="t5">5*5</div>
+        </div>
+           
+            <!------------------>
+        <div>
+            <h2>First Move</h2>
+            <div class="you">YOU</div>
+            <div class="opp">OPPONENT</div>
+        </div>
+        <div>
+            <h2>Level</h2>
+            <div class="level">1</div>
+            <div class="level2">2</div>
+            <div class="level3">3</div>
+        </div>
+            <!-----level------->
+        
+           
+            <!------------------>
+
+
+            <div class="play">PLAY</div>
+        </div>
+        <div class="Mycam hide">   
+            <div id="btn"><button onclick="take_snapshot()" >Take Your snapshot</button></div>   
+            <div id="camera" ></div>
+                     
+            <div class ="result hide"id="results" ></div>
+            <canvas id="cvs" width="550" height="550"></canvas>  
+              
+        </div>
+
+        <div class="friendCam hide">
+            <div id="btn2"><button onclick="take_snapshot2()" >Take Friend's snapshot</button></div>
+            <div id="camera2" ></div>
+            
+            <div class ="result hide"id="results2" ></div>
+            
+        </div>
+        
+        <div class="Robot hide">    
+            <img src="img/robot.png" width=250px height="250px" >
+        </div>
+
+ 
+        <div class="gameover hide"></div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.26/webcam.min.js"></script>
+    <script src="options.js"></script>
+    <script src="game.js"></script>
+    <script src="game2.js"></script>
+    <script>
+        Webcam.set({
+            width:270,
+            height:270,
+            image_format:'jpeg',
+            jpeg_quality:90
+        })
+        const cam=document.getElementById('camera');
+        const res=document.getElementById("results");
+        const btn=document.getElementById('btn');
+        const cam2=document.getElementById('camera2');
+        const res2=document.getElementById("results2");
+        const btn2=document.getElementById('btn2');
+
+        Webcam.attach("#camera")
+        function take_snapshot(){
+            Webcam.snap(function(data_uri){
+                document.getElementById('results').innerHTML = '<img src ="'+data_uri+'"/>';
+                cam.classList.add('hide');
+                // btn.classList.add('hide');
+                res.classList.remove('hide');
+            });
+        }
+        Webcam.attach("#camera2")
+        function take_snapshot2(){
+        Webcam.snap(function(data_uri){
+            document.getElementById('results2').innerHTML = '<img src ="'+data_uri+'"/>';
+            cam2.classList.add('hide');
+            // btn2.classList.add('hide');
+            res2.classList.remove('hide');
+        }); 
+    }
+    </script>
+</body>
+</html>

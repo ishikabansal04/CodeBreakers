@@ -26,8 +26,8 @@ const canvas = document.getElementById("canvas");
 const c= document.querySelector(".Mycam");
 const frndcam=document.querySelector(".friendCam");
 const Robot=document.querySelector(".Robot");
-// const body=document.querySelector("body");
-// GAME OVER ELEMENT
+const body=document.querySelector("body");
+//GAME OVER ELEMENT
 const gameOverElement = document.querySelector(".gameover");
 
 const player = new Object;
@@ -90,6 +90,7 @@ oppBtn.addEventListener("click", function(){
     firstPlayer = "opp";
     switchActive(youBtn, oppBtn);
 });
+
 //------------firstPlayer----------------
 
 levBtn.addEventListener("click", function() {
@@ -145,11 +146,13 @@ playBtn.addEventListener("click", function(){
     
     if(DIMENSION == "3*3"){
         game(player, OPPONENT, LEVEL,firstPlayer);
+        //game(player, OPPONENT, LEVEL);
         options.classList.add("hide");
         // c.classList.remove("hide");
         // frndcam.classList.remove("hide");
     }else {
         game2(player, OPPONENT,LEVEL,firstPlayer);
+        //game2(player, OPPONENT, LEVEL);
         options.classList.add("hide");
         // c.classList.remove("hide");
         // frndcam.classList.remove("hide");

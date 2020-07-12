@@ -86,6 +86,9 @@ function game2(player, OPPONENT,LEVEL, firstPlayer){
                 //ctx.drawImage(img, j * SPACE_SIZE, i * SPACE_SIZE);
                 img.onload=function(){ctx.drawImage(img,234,234);}
             }
+            else{
+                currentPlayer=player.friend;
+            }
         }
     }
     selectPlayer1();
@@ -136,16 +139,8 @@ function game2(player, OPPONENT,LEVEL, firstPlayer){
 
             if(LEVEL==1){
                 id= level1_algo(gameData, player.computer);
-            }
-
-            else if(LEVEL==2){
-                //id = level2_algo( gameData, player.computer );
-                id = alphabeta(gameData, player.computer, -Infinity, +Infinity).id;
-
-            }
-
-            else if(LEVEL==3){
-                id = minimax( gameData, player.computer ).id;
+            }else if(LEVEL==2){
+                id = level2_algo( gameData, player.computer );
             }
 
             // store the player's move to gameData
@@ -181,19 +176,18 @@ function game2(player, OPPONENT,LEVEL, firstPlayer){
     function level1_algo(gameData, PLAYER)
     {
         let EMPTY_SPACE = getEmptySpaces(gameData);
-        let id= EMPTY_SPACE[0];
-        delete EMPTY_SPACE[0];
+        let id = EMPTY_SPACE[Math.floor(Math.random() * EMPTY_SPACE.length)];
+        delete EMPTY_SPACE[id];
         return id;
         
     }
     
     //MAGIC SQUARE METHOD
-
     function level2_algo(gameData, PLAYER){
         let magicSq=[24,17,1,8,15,23,5,7,14,16,4,6,13,20,22,10,12,19,21,3,11,18,25,2,9];
         let sum=0;
         console.log(gameData);
-        let id;
+        let id=-1;
         for(let i=0;i<gameData.length;i++){
             if(gameData[i]==us){
                 sum=sum + magicSq[i];
@@ -209,7 +203,7 @@ function game2(player, OPPONENT,LEVEL, firstPlayer){
                 break;
             }
         }
-        if(!id){
+        if(id==-1){
             // for(let i=0;i<EMPTY_SPACE.length;i++){
                 let sum2=0;
                 for(let j=0;j<gameData.length;j++){
@@ -227,12 +221,12 @@ function game2(player, OPPONENT,LEVEL, firstPlayer){
                                     break;
                                 }
                             }
-                         if(id){
+                         if(id!=-1){
                              break;
                          }
                     // }
                 }
-                if(!id){
+                if(id==-1){
                     id=EMPTY_SPACE[0];
                     delete EMPTY_SPACE[0];
                 }   
@@ -242,162 +236,7 @@ function game2(player, OPPONENT,LEVEL, firstPlayer){
         console.log(id);
     return id;   
     }
-
-    function alphabeta(gameData, PLAYER, alpha, beta)
-    {
-         // BASE
-         if( isWinner(gameData, player.computer) ) return { evaluation : +10 };
-         if( isWinner(gameData, player.man)      ) return { evaluation : -10 };
-         if( isTie(gameData)                     ) return { evaluation : 0 };
- 
-         // LOOK FOR EMTY SPACES
-         let EMPTY_SPACES = getEmptySpaces(gameData);
- 
-         // SAVE ALL MOVES AND THEIR EVALUATIONS
-         let moves = [];
- 
-         // LOOP OVER THE EMPTY SPACES TO EVALUATE THEM
-         for( let i = 0; i < EMPTY_SPACES.length; i++){
-             // GET THE ID OF THE EMPTY SPACE
-             let id = EMPTY_SPACES[i];
- 
-             // BACK UP THE SPACE
-             let backup = gameData[id];
- 
-             // MAKE THE MOVE FOR THE PLAYER
-             gameData[id] = PLAYER;
- 
-             // SAVE THE MOVE'S ID AND EVALUATION
-             let move = {};
-
-             move.id = id;
-
-             // THE MOVE EVALUATION
-             if( PLAYER == player.computer){
-                 move.evaluation = alphabeta(gameData, player.man,alpha,beta).evaluation;
-             }
-             
-             else{
-                 move.evaluation = alphabeta(gameData, player.computer,alpha,beta).evaluation;
-             }
- 
-             // RESTORE SPACE
-             gameData[id] = backup;
- 
-             // SAVE MOVE TO MOVES ARRAY
-             moves.push(move);
-         }
- 
-         // MINIMAX ALGORITHM
-         let bestMove;
- 
-         if(PLAYER == player.computer){
-             // MAXIMIZER
-             let bestEvaluation = -Infinity;
-             for(let i = 0; i < moves.length; i++){
-                 if( moves[i].evaluation > bestEvaluation ){
-                     bestEvaluation = moves[i].evaluation;
-                     bestMove = moves[i];
-                 }
-                 if(bestEvaluation>alpha)
-                 {
-                     alpha=bestEvaluation;
-                 }
-               // alpha= max(alpha, bestEvaluation);
-                //alpha beta pruning 
-                if(beta <=alpha) break;
-             }
-         }
-         else{
-             // MINIMIZER
-             let bestEvaluation = +Infinity;
-             for(let i = 0; i < moves.length; i++){
-                 if( moves[i].evaluation < bestEvaluation ){
-                     bestEvaluation = moves[i].evaluation;
-                     bestMove = moves[i];
-                 }
-
-                 if(bestEvaluation>beta)
-                 {
-                     beta=bestEvaluation;
-                 }
-                 //beta= max(beta, bestEvaluation);
-                 //alpha beta pruning
-                 if(beta<=alpha) break;
-             }
-             
-         }
- 
-         return bestMove;
-    }
-
-    // MINIMAX
-    function minimax(gameData, PLAYER){
-        // BASE
-        if( isWinner(gameData, player.computer) ) return { evaluation : +26 };
-        if( isWinner(gameData, player.man)      ) return { evaluation : -26 };
-        if( isTie(gameData)                     ) return { evaluation : 0 };
-
-        // LOOK FOR EMTY SPACES
-        let EMPTY_SPACE = getEmptySpaces(gameData);
-
-        // SAVE ALL MOVES AND THEIR EVALUATIONS
-        let moves = [];
-
-        // LOOP OVER THE EMPTY SPACES TO EVALUATE THEM
-        for( let i = 0; i < EMPTY_SPACE.length; i++){
-            // GET THE ID OF THE EMPTY SPACE
-            let id = EMPTY_SPACE[i];
-
-            // BACK UP THE SPACE
-            let backup = gameData[id];
-
-            // MAKE THE MOVE FOR THE PLAYER
-            gameData[id] = PLAYER;
-
-            // SAVE THE MOVE'S ID AND EVALUATION
-            let move = {};
-            move.id = id;
-            // THE MOVE EVALUATION
-            if( PLAYER == player.computer){
-                move.evaluation = minimax(gameData, player.man).evaluation;
-            }else{
-                move.evaluation = minimax(gameData, player.computer).evaluation;
-            }
-
-            // RESTORE SPACE
-            gameData[id] = backup;
-
-            // SAVE MOVE TO MOVES ARRAY
-            moves.push(move);
-        }
-
-        // MINIMAX ALGORITHM
-        let bestMove;
-
-        if(PLAYER == player.computer){
-            // MAXIMIZER
-            let bestEvaluation = -Infinity;
-            for(let i = 0; i < moves.length; i++){
-                if( moves[i].evaluation > bestEvaluation ){
-                    bestEvaluation = moves[i].evaluation;
-                    bestMove = moves[i];
-                }
-            }
-        }else{
-            // MINIMIZER
-            let bestEvaluation = +Infinity;
-            for(let i = 0; i < moves.length; i++){
-                if( moves[i].evaluation < bestEvaluation ){
-                    bestEvaluation = moves[i].evaluation;
-                    bestMove = moves[i];
-                }
-            }
-        }
-
-        return bestMove;
-    }
-
+    
     // GET EMPTY SPACES
     function getEmptySpaces(gameData){
         let EMPTY = [];
@@ -553,6 +392,6 @@ function game2(player, OPPONENT,LEVEL, firstPlayer){
         let img = player == "X" ? x2Image : o2Image;
 
         // the x,y positon of the image are the x,y of the clicked space
-        ctx.drawImage(img, (j * SPACE_SIZE)+15, (i * SPACE_SIZE)+15);
+        ctx.drawImage(img, (j * SPACE_SIZE)+15,(i * SPACE_SIZE)+15);
     }
 }

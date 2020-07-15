@@ -23,7 +23,7 @@ body{
     background-size:cover;
     background-repeat: no-repeat;
     opacity:1;
-    padding:0;
+    padding:4px 4px;
     margin:0;
     width:100%;
 
@@ -251,6 +251,8 @@ button{
     /* width: 110px; */
     background-color:#9BD770;
     color:#000;
+    transform: rotate(360deg);
+    transition: ease-in 1s;
 }
 
 .active{

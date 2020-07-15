@@ -137,10 +137,12 @@ function game(player, OPPONENT, LEVEL, firstPlayer){
                     id= level1_algo(gameData, player.computer);
                 }else if(LEVEL==2){
                     id = level2_algo( gameData, player.computer );
-                }else if(LEVEL==3){
+                }
+                else if(LEVEL==3){
                     id = minimax( gameData, player.computer ).id;
-                }else if(LEVEL==3){
-                    id = alphabeta(gameData, player.computer).id;
+                }
+                else if(LEVEL==4){
+                    id = alphabeta(gameData, player.computer,-Infinity,+Infinity).id;
                 }
 
             // store the player's move to gameData

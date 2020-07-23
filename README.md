@@ -14,7 +14,7 @@ HTML, CSS, Javascript
 
 **Screenshots:**
 
-**Features**
+**Features:**
 
 The game provides following options:
 

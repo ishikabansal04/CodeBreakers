@@ -50,9 +50,11 @@ The user is provided with the option of taking a snapshot through the webcam and
 
 ## ALGORITHMS IMPLEMENTED:
 <ol>
-  <li> ### Using Random() </li>
-  <li> ### Magic Sqaure Logic </li>
-  <li> ### Alpha Beta Pruning (Optimised Minimax Algorithm) </li>
+  <li>Using Random() </li>
+  <li>Magic Sqaure Logic </li>
+  <li>Alpha Beta Pruning (Optimised Minimax Algorithm) </li>
+</ol>
+  
 
 ## Flow of Game:
 

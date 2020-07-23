@@ -1,11 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Tic Tac Toe - JavaScript</title>
+
     <link rel="stylesheet" href="style.css">
+    
+
 </head>
 <body>
     <div class="container">
@@ -51,6 +55,40 @@
 
 
             <div class="play">PLAY</div>
+            <div class="scores">SCORES</div>
+
+            <!--<a href="home.html">SCORES</a>-->
+            <!--------BOARD------->
+
+            <div class="table-score">
+
+    
+                <table class="scoretable" style= "display: block">
+                    <thead>
+                        <tr>
+                            <th><h1>GAME</h1></th>
+                            <th><h1 >You</h1></th>
+                            <th><h1 >Opponent</h1></th>
+                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>NIL</td>
+                            <td>NIL</td>
+                            <td>NIL</td>
+                            
+                        </tr>
+                   
+                    </tbody>
+                </table>
+
+            </div>
+
+
+            <!--------BOARD------->
+            <div class="reset">RESET SCORES</div>  
+            <div id="demo"></div>
         </div>
         <div class="Mycam hide">   
             <div id="btn"><button onclick="take_snapshot()" >Take Your snapshot</button></div>   
@@ -80,6 +118,7 @@
     <script src="options.js"></script>
     <script src="game.js"></script>
     <script src="game2.js"></script>
+    <script src="displayscore.js"></script>
     <script>
         Webcam.set({
             width:270,
@@ -112,6 +151,12 @@
             res2.classList.remove('hide');
         }); 
     }
+
+    /*scoreBtn.addEventListener("click", function() {
+    console.log("eventlistener clicked");
+    var table = document.getElementById("container");
+    displayscore(table);
+})*/
     </script>
 </body>
 </html>

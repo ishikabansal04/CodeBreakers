@@ -1,3 +1,4 @@
+
 // SELECT START ELEMENT
 const options = document.querySelector(".options");
 
@@ -26,7 +27,12 @@ const canvas = document.getElementById("canvas");
 const c= document.querySelector(".Mycam");
 const frndcam=document.querySelector(".friendCam");
 const Robot=document.querySelector(".Robot");
-const body=document.querySelector("body");
+const body=document.querySelector("body"); 
+const scoreBtn= document.querySelector(".scores") 
+const resetBtn= document.querySelector(".reset")
+const scoretable= document.querySelector(".scoretable");
+scoretable.classList.add("hide");
+
 //GAME OVER ELEMENT
 const gameOverElement = document.querySelector(".gameover");
 
@@ -110,6 +116,31 @@ levBtn3.addEventListener("click", function(){
     
 })
 
+scoreBtn.addEventListener("click", function() {
+    scoretable.classList.remove("hide");
+    console.log("eventlistener clicked");
+    
+    //var table = document.getElementsByClassName("scoreboard");
+    displayscore();
+    console.log(scoretable)
+    
+})
+
+resetBtn.addEventListener("click",function(){
+    reset_storage(); //actually deleting frm memory
+    delete_scores(); //showing in the table the scores are deleted-- error!!
+})
+
+/*resetBtn.onclick = function () {
+
+    reset_storage();
+    delete_scores();
+
+    setTimeout(function () {
+        document.getElementsByClassName('scoretable').style.display='none';
+    }, 10000);
+    return false;
+};*/
 //-----------------------------------
 
 playBtn.addEventListener("click", function(){
@@ -141,11 +172,15 @@ playBtn.addEventListener("click", function(){
     {
         levBtn.style.backgroundColor="red";
         levBtn2.style.backgroundColor="red";
+        levBtn3.style.backgroundColor="red";
         return;
     }
+
+    
     
     if(DIMENSION == "3*3"){
         game(player, OPPONENT, LEVEL,firstPlayer);
+        //console.log(window.scoresOne.scores);
         //game(player, OPPONENT, LEVEL);
         options.classList.add("hide");
         // c.classList.remove("hide");

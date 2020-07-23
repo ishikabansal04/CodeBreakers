@@ -1,20 +1,20 @@
 # CodeBreakers- Tic Tac Toe Project using AI
 
-Project title: 
+**Project title:** 
 Entertain The Crew
 
-Motivation:
+**Motivation:**
 The project is a part of Microsoft Codess mentorship program-2020. During this program we learnt many new technologies via sessions conducted by Microsoft team and mentors assigned to us. Microsoft team motivated us throughout the program to build this project.
 
-Theme:
+**Theme:**
 Our great astronauts are on a mission to reach Mars and colonize there.While they are on board the spaceship has to cover a huge distance of almost 103.6 million km and feel bored on the way. So, to entertain the crew we have rebuilt the tic-tac-toe game with some exciting twists and turns. Hope they will enjoy it!
 
-Languages Used: 
+**Languages Used:** 
 HTML, CSS, Javascript
 
-Screenshots:
+**Screenshots:**
 
-Features:
+**Features**
 
 The game provides following options:
 
@@ -51,5 +51,5 @@ Other feature provided:
 Webcam- 
 The user is provided with the option of taking a snapshot through the webcam and displaying the image on the page itself. In the case of a computer as an opponent the opponent is displayed with the image of AI while in case of friend both the friend and the player one can capture their snapshots separately and display them on the same page so as to make the game much more interesting. This webcam has been coded using webcam.js library.
 
-Flow of Game:
+**Flow of Game:**
 

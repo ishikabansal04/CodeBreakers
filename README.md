@@ -18,7 +18,7 @@ HTML, CSS, Javascript
 
 The game provides following options:
 
-Symbol : A player chooses any symbol of his choice to play the game each time , the game includes ‘X’ and ‘O’ . 
+***Symbol*** : A player chooses any symbol of his choice to play the game each time , the game includes ‘X’ and ‘O’ . 
 
 A player marks any of the squares of grid with his symbol and his aim is to create a straight line horizontally, vertically or diagonally with two intentions :
 Create a straight line before the opponent could win the game.

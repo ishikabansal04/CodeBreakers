@@ -51,7 +51,7 @@ Other feature provided:
 ***Webcam:***
 The user is provided with the option of taking a snapshot through the webcam and displaying the image on the page itself. In the case of a computer as an opponent the opponent is displayed with the image of AI while in case of friend both the friend and the player one can capture their snapshots separately and display them on the same page so as to make the game much more interesting. This webcam has been coded using webcam.js library.
 
-**ALGORITHMS IMPLEMENTED***
+**ALGORITHMS IMPLEMENTED**
 ***Using Random()***
 ***Magic Sqaure***
 ***Alpha Beta Pruning ( Optimised Minimax Algorithm )***

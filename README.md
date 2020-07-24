@@ -65,5 +65,6 @@ The user is provided with the option of taking a snapshot through the webcam and
 </ol>
   
 ## Flow of Game:
+![flowchart of game](https://github.com/ishikabansal04/CodeBreakers/blob/master/flowchart-diagram.png)
 [ Refer to the documentation here ] (https://docs.google.com/document/d/e/2PACX-1vRscJjfPxWcIdIDCs8Um2lGbVysCw8zQTi6Ii3YE1vgVsmry9VMLZuXmMY-tqN0IaFStSQT39cIxDzY/pub)
 

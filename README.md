@@ -9,7 +9,7 @@ The project is a part of Microsoft Codess mentorship program-2020. During this p
 ## Theme:
 Our great astronauts are on a mission to reach Mars and colonize there.While they are on board the spaceship has to cover a huge distance of almost 103.6 million km and feel bored on the way. So, to entertain the crew we have rebuilt the tic-tac-toe game with some exciting twists and turns. Hope they will enjoy it!
 
-## Seenshots:
+## Screenshots:
 
 ## Features:
 
@@ -56,6 +56,5 @@ The user is provided with the option of taking a snapshot through the webcam and
   <li>Alpha Beta Pruning (Optimised Minimax Algorithm) </li>
 </ol>
   
-
 ## Flow of Game:
 

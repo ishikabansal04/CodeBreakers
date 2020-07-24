@@ -10,9 +10,13 @@ The project is a part of Microsoft Codess mentorship program-2020. During this p
 Our great astronauts are on a mission to reach Mars and colonize there.While they are on board the spaceship has to cover a huge distance of almost 103.6 million km and feel bored on the way. So, to entertain the crew we have rebuilt the tic-tac-toe game with some exciting twists and turns. Hope they will enjoy it!
 
 ## Screenshots:
+#### choose your options
 ![choose your options](https://github.com/ishikabansal04/CodeBreakers/blob/master/ss1.png)
+#### playing a 5*5 tictactoe with the AI
 ![playing a 5*5 tictactoe with the AI](https://github.com/ishikabansal04/CodeBreakers/blob/master/Screenshot%20(1311).png)
+#### playing a 5*5 tictactoe with a friend
 ![playing a 5*5 tictactoe with a friend](https://github.com/ishikabansal04/CodeBreakers/blob/master/Screenshot%20(1312).png)
+#### winning the game
 ![winning the game](https://github.com/ishikabansal04/CodeBreakers/blob/master/ss2.png)
 
 ## Features:
@@ -61,4 +65,5 @@ The user is provided with the option of taking a snapshot through the webcam and
 </ol>
   
 ## Flow of Game:
+[ Refer to the documentation here ] (https://docs.google.com/document/d/e/2PACX-1vRscJjfPxWcIdIDCs8Um2lGbVysCw8zQTi6Ii3YE1vgVsmry9VMLZuXmMY-tqN0IaFStSQT39cIxDzY/pub)
 

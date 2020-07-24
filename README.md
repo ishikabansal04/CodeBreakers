@@ -10,7 +10,7 @@ The project is a part of Microsoft Codess mentorship program-2020. During this p
 Our great astronauts are on a mission to reach Mars and colonize there.While they are on board the spaceship has to cover a huge distance of almost 103.6 million km and feel bored on the way. So, to entertain the crew we have rebuilt the tic-tac-toe game with some exciting twists and turns. Hope they will enjoy it!
 
 ## Screenshots:
-https://github.com/ishikabansal04/CodeBreakers/issues/2#issue-665102668
+![](https://github.com/ishikabansal04/CodeBreakers/blob/master/Screenshot%20(6).png)
 
 ## Features:
 

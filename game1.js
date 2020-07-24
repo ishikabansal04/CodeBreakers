@@ -1,16 +1,16 @@
-function game2(player, OPPONENT, LEVEL, firstPlayer) {
+function game1(player, OPPONENT, LEVEL, firstPlayer) {
   // select canvas
   const canvas = document.getElementById("cvs");
   const ctx = canvas.getContext("2d");
 
   // board variables
   let board = [];
-  const COLUMN = 5;
-  const ROW = 5;
-  const SPACE_SIZE = 110;
+  const COLUMN = 3;
+  const ROW = 3;
+  const SPACE_SIZE = 183.3;
 
   //  array to storemoves of all players
-  let gameData = new Array(25);
+  let gameData = new Array(9);
 
   // By default the first player to play is the human(man)
   let currentPlayer = player.man;
@@ -25,26 +25,22 @@ function game2(player, OPPONENT, LEVEL, firstPlayer) {
   let winningIndex;
 
   // load X & O images
-  const x2Image = new Image();
-  x2Image.src = "img/X2.png";
+  const xImage = new Image();
+  xImage.src = "img/X.png";
 
-  const o2Image = new Image();
-  o2Image.src = "img/O2.png";
+  const oImage = new Image();
+  oImage.src = "img/O.png";
 
   // Winning combinations
   const COMBOS = [
-    [0, 1, 2, 3, 4],
-    [5, 6, 7, 8, 9],
-    [10, 11, 12, 13, 14],
-    [15, 16, 17, 18, 19],
-    [20, 21, 22, 23, 24],
-    [0, 5, 10, 15, 20],
-    [1, 6, 11, 16, 21],
-    [2, 7, 12, 17, 22],
-    [3, 8, 13, 18, 23],
-    [4, 9, 14, 19, 24],
-    [0, 6, 12, 18, 24],
-    [4, 8, 12, 16, 20],
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8],
+    [0, 3, 6],
+    [1, 4, 7],
+    [2, 5, 8],
+    [0, 4, 8],
+    [2, 4, 6],
   ];
 
   // to check game over
@@ -60,16 +56,12 @@ function game2(player, OPPONENT, LEVEL, firstPlayer) {
       for (let j = 0; j < COLUMN; j++) {
         board[i][j] = id;
         id++;
-
-        // draw the spaces
-        // ctx.strokeStyle = "#000";
-        // ctx.strokeRect(j * SPACE_SIZE, i * SPACE_SIZE, SPACE_SIZE, SPACE_SIZE);
       }
     }
-    for (let i = 1; i < 5; i++) {
+    for (let i = 1; i < ROW; i++) {
       BoardLine(SPACE_SIZE * i, 0, SPACE_SIZE * i, 550);
     }
-    for (let i = 1; i < 5; i++) {
+    for (let i = 1; i < COLUMN; i++) {
       BoardLine(0, SPACE_SIZE * i, 550, SPACE_SIZE * i);
     }
   }
@@ -80,16 +72,16 @@ function game2(player, OPPONENT, LEVEL, firstPlayer) {
   function selectPlayer1() {
     if (firstPlayer == "opp") {
       if (OPPONENT == "computer") {
-        gameData[12] = player.computer;
+        gameData[4] = player.computer;
         console.log(player.computer);
         console.log(gameData);
-        let img = player.computer == "X" ? x2Image : o2Image;
+        let img = player.computer == "X" ? xImage : oImage;
         console.log(img.onload);
-        // the x,y positon of the image are the x,y of the clicked space
-        //ctx.drawImage(img, j * SPACE_SIZE, i * SPACE_SIZE);
         img.onload = function () {
-          ctx.drawImage(img, 234, 234);
+          ctx.drawImage(img, 204.8, 204.8);
         };
+      } else {
+        currentPlayer = player.friend;
       }
     }
   }
@@ -143,7 +135,7 @@ function game2(player, OPPONENT, LEVEL, firstPlayer) {
       } else if (LEVEL == 2) {
         id = level2_algo(gameData, player.computer);
       } else if (LEVEL == 3) {
-        id = alphabeta(gameData, 0, player.computer, -Infinity, +Infinity).id;
+        id = alphabeta(gameData, player.computer, -Infinity, +Infinity).id;
       }
 
       // store the player's move to gameData
@@ -165,53 +157,26 @@ function game2(player, OPPONENT, LEVEL, firstPlayer) {
 
       // check if it's a tie game
       if (isTie(gameData)) {
-        setTimeout(showGameOver, "tie");
+        setTimeout(showGameOver, time, "tie");
         GAME_OVER = true;
         return;
       }
     } else {
-      //  give turn to the other PLAYER
+      // give turn to the other PLAYER
       currentPlayer = currentPlayer == player.man ? player.friend : player.man;
     }
   });
 
   //Naiive Algorithm
   function level1_algo(gameData, PLAYER) {
-    let EMPTY_SPACE = getEmptySpaces(gameData);
-    let id = EMPTY_SPACE[Math.floor(Math.random() * EMPTY_SPACE.length)];
-    delete EMPTY_SPACE[id];
+    let EMPTY_SPACES = getEmptySpaces(gameData);
+    let id = EMPTY_SPACES[Math.floor(Math.random() * EMPTY_SPACES.length)];
+    delete EMPTY_SPACES[id];
     return id;
   }
-
-  //MAGIC SQUARE METHOD
+  //MAGIC SQUARE method
   function level2_algo(gameData, PLAYER) {
-    let magicSq = [
-      22,
-      18,
-      3,
-      2,
-      20,
-      7,
-      16,
-      9,
-      14,
-      19,
-      5,
-      11,
-      13,
-      15,
-      21,
-      25,
-      12,
-      17,
-      10,
-      1,
-      6,
-      8,
-      23,
-      24,
-      4,
-    ];
+    let magicSq = [8, 1, 6, 3, 5, 7, 4, 9, 2];
     let sum = 0;
     let id = -1;
     let count = 0;
@@ -222,9 +187,9 @@ function game2(player, OPPONENT, LEVEL, firstPlayer) {
       }
     }
     let EMPTY_SPACE = getEmptySpaces(gameData);
-    if (count == 4) {
+    if (count == 2) {
       for (let i = 0; i < EMPTY_SPACE.length; i++) {
-        if (65 - sum - magicSq[EMPTY_SPACE[i]] == 0) {
+        if (15 - sum - magicSq[EMPTY_SPACE[i]] == 0) {
           id = EMPTY_SPACE[i];
           delete EMPTY_SPACE[i];
           break;
@@ -237,7 +202,7 @@ function game2(player, OPPONENT, LEVEL, firstPlayer) {
           sum2 = sum - magicSq[j];
         }
         for (x = 0; x < EMPTY_SPACE.length; x++) {
-          if (65 - sum2 == magicSq[EMPTY_SPACE[x]]) {
+          if (15 - sum2 == magicSq[EMPTY_SPACE[x]]) {
             id = EMPTY_SPACE[x];
             delete EMPTY_SPACE[x];
             break;
@@ -248,14 +213,16 @@ function game2(player, OPPONENT, LEVEL, firstPlayer) {
         }
       }
     }
+
     if (id == -1) {
       let sum2 = 0;
       for (let j = 0; j < gameData.length; j++) {
         if (gameData[j] == us) {
           sum2 = sum - magicSq[j];
         }
+        sum2 = 15 - sum2;
         for (x = 0; x < EMPTY_SPACE.length; x++) {
-          if (65 - sum2 == magicSq[EMPTY_SPACE[x]]) {
+          if (15 - sum2 == magicSq[EMPTY_SPACE[x]]) {
             id = EMPTY_SPACE[x];
             delete EMPTY_SPACE[x];
             break;
@@ -272,14 +239,16 @@ function game2(player, OPPONENT, LEVEL, firstPlayer) {
     }
     return id;
   }
+
   //Alpha-Beta Pruning Algorithm
-  function alphabeta(gameData, depth, PLAYER, alpha, beta) {
+  function alphabeta(gameData, PLAYER, alpha, beta) {
     // BASE
     if (isWinner(gameData, player.computer)) return { evaluation: +10 };
     if (isWinner(gameData, player.man)) return { evaluation: -10 };
     if (isTie(gameData)) return { evaluation: 0 };
-    if (depth == 3) return { evaluation: 10 };
-    // LOOK FOR EMTY SPACES
+    //  if( depth==3 ) return { evaluation : 0};
+
+    // LOOK FOR EMpTY SPACES
     let EMPTY_SPACES = getEmptySpaces(gameData);
 
     // SAVE ALL MOVES AND THEIR EVALUATIONS
@@ -305,7 +274,6 @@ function game2(player, OPPONENT, LEVEL, firstPlayer) {
       if (PLAYER == player.computer) {
         move.evaluation = alphabeta(
           gameData,
-          depth + 1,
           player.man,
           alpha,
           beta
@@ -313,7 +281,6 @@ function game2(player, OPPONENT, LEVEL, firstPlayer) {
       } else {
         move.evaluation = alphabeta(
           gameData,
-          depth + 1,
           player.computer,
           alpha,
           beta
@@ -340,7 +307,8 @@ function game2(player, OPPONENT, LEVEL, firstPlayer) {
         }
         if (bestEvaluation > alpha) {
           alpha = bestEvaluation;
-        } else if (beta <= alpha) break;
+        }
+        if (beta <= alpha) break;
       }
     } else {
       // MINIMIZER
@@ -351,9 +319,10 @@ function game2(player, OPPONENT, LEVEL, firstPlayer) {
           bestMove = moves[i];
         }
 
-        if (bestEvaluation < beta) {
+        if (bestEvaluation > beta) {
           beta = bestEvaluation;
-        } else if (beta <= alpha) break;
+        }
+        if (beta <= alpha) break;
       }
     }
 
@@ -413,30 +382,22 @@ function game2(player, OPPONENT, LEVEL, firstPlayer) {
   //Function to determine the winning line coordinates
   function determineWinningLineCoordinates() {
     let tuple = COMBOS[winningIndex];
-    if (tuple[0] == 0 && tuple[4] == 24) {
+    if (tuple[0] == 0 && tuple[2] == 8) {
       winnerLine(0, 0, 550, 550);
-    } else if (tuple[0] == 4 && tuple[4] == 20) {
+    } else if (tuple[0] == 2 && tuple[2] == 6) {
       winnerLine(550, 0, 0, 550);
-    } else if (tuple[0] == 0 && tuple[4] == 20) {
-      winnerLine(55, 0, 55, 550);
-    } else if (tuple[0] == 1 && tuple[4] == 21) {
-      winnerLine(165, 0, 165, 550);
-    } else if (tuple[0] == 2 && tuple[4] == 22) {
-      winnerLine(275, 0, 275, 550);
-    } else if (tuple[0] == 3 && tuple[4] == 23) {
-      winnerLine(385, 0, 385, 550);
-    } else if (tuple[0] == 4 && tuple[4] == 24) {
-      winnerLine(495, 0, 495, 550);
-    } else if (tuple[0] == 0 && tuple[4] == 4) {
-      winnerLine(0, 55, 550, 55);
-    } else if (tuple[0] == 5 && tuple[4] == 9) {
-      winnerLine(0, 165, 550, 165);
-    } else if (tuple[0] == 10 && tuple[4] == 14) {
-      winnerLine(0, 275, 550, 275);
-    } else if (tuple[0] == 15 && tuple[4] == 19) {
-      winnerLine(0, 385, 550, 385);
-    } else if (tuple[0] == 20 && tuple[4] == 24) {
-      winnerLine(0, 495, 550, 495);
+    } else if (tuple[0] == 0 && tuple[2] == 6) {
+      winnerLine(91.5, 0, 91.5, 550);
+    } else if (tuple[0] == 1 && tuple[2] == 7) {
+      winnerLine(274.8, 0, 274.8, 550);
+    } else if (tuple[0] == 2 && tuple[2] == 8) {
+      winnerLine(458.1, 0, 458.1, 550);
+    } else if (tuple[0] == 0 && tuple[2] == 2) {
+      winnerLine(0, 91.5, 550, 91.5);
+    } else if (tuple[0] == 3 && tuple[2] == 5) {
+      winnerLine(0, 274.8, 550, 274.8);
+    } else if (tuple[0] == 6 && tuple[2] == 8) {
+      winnerLine(0, 458.1, 550, 458.1);
     }
   }
 
@@ -449,9 +410,8 @@ function game2(player, OPPONENT, LEVEL, firstPlayer) {
     gradient.addColorStop("0", "magenta");
     gradient.addColorStop("0.5", "blue");
     gradient.addColorStop("1.0", "green");
-    // Fill with gradient
     ctx.strokeStyle = gradient;
-    ctx.lineWidth = 4;
+    ctx.lineWidth = 5;
     ctx.stroke();
   }
 
@@ -463,7 +423,7 @@ function game2(player, OPPONENT, LEVEL, firstPlayer) {
     var gradient = ctx.createLinearGradient(0, 0, 170, 0);
     gradient.addColorStop("1.0", "black");
     ctx.strokeStyle = gradient;
-    ctx.lineWidth = 2;
+    ctx.lineWidth = 3;
     ctx.stroke();
   }
 
@@ -474,7 +434,7 @@ function game2(player, OPPONENT, LEVEL, firstPlayer) {
     let winner;
     if (player == "tie") {
       winner = "It's a tie!";
-      SaveDataToLocalStorage(0);
+      SaveDataToLocalStorage(2);
     } else if (us == player) {
       winner = "Player One!";
       SaveDataToLocalStorage(1);
@@ -484,6 +444,7 @@ function game2(player, OPPONENT, LEVEL, firstPlayer) {
       } else {
         winner = "Computer";
       }
+      console.log("saving score");
       SaveDataToLocalStorage(0);
     }
     gameOverElement.innerHTML = `
@@ -500,7 +461,7 @@ function game2(player, OPPONENT, LEVEL, firstPlayer) {
 
   // draw moves on the board
   function drawOnBoard(player, i, j) {
-    let img = player == "X" ? x2Image : o2Image;
+    let img = player == "X" ? xImage : oImage;
 
     // the x,y positon of the image are the x,y of the clicked space
     ctx.drawImage(img, j * SPACE_SIZE + 15, i * SPACE_SIZE + 15);

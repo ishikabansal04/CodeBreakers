@@ -60,10 +60,6 @@ function game2(player, OPPONENT, LEVEL, firstPlayer) {
       for (let j = 0; j < COLUMN; j++) {
         board[i][j] = id;
         id++;
-
-        // draw the spaces
-        // ctx.strokeStyle = "#000";
-        // ctx.strokeRect(j * SPACE_SIZE, i * SPACE_SIZE, SPACE_SIZE, SPACE_SIZE);
       }
     }
     for (let i = 1; i < 5; i++) {
@@ -86,7 +82,6 @@ function game2(player, OPPONENT, LEVEL, firstPlayer) {
         let img = player.computer == "X" ? x2Image : o2Image;
         console.log(img.onload);
         // the x,y positon of the image are the x,y of the clicked space
-        //ctx.drawImage(img, j * SPACE_SIZE, i * SPACE_SIZE);
         img.onload = function () {
           ctx.drawImage(img, 234, 234);
         };
@@ -165,7 +160,7 @@ function game2(player, OPPONENT, LEVEL, firstPlayer) {
 
       // check if it's a tie game
       if (isTie(gameData)) {
-        setTimeout(showGameOver, "tie");
+        setTimeout(showGameOver,time, "tie");
         GAME_OVER = true;
         return;
       }
